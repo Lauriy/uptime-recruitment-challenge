@@ -16,9 +16,11 @@
         $('#exampleModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget),
                 url = button.data('remote'),
-                modal = $(this);
+                modal = $(this),
+                modalBody = modal.find('.modal-body');
+            modalBody.text('...');
             $.get('/mercury-parse/' + btoa(url), function (response) {
-                modal.find('.modal-body').text(response)
+                modalBody.text(response)
             });
         })
     });
